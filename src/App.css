@@ -1,0 +1,1178 @@
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500;700&display=swap');
+
+:root {
+  font-family: 'Kiwi Maru', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  color: #5e4334;
+  background: #fff8e9;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: linear-gradient(180deg, #fff1cf 0%, #fff9ec 240px, #f5f9ec 100%);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* 全体コンテナ（下部固定の江戸街道ステージ＋メニュー分の余白を確保） */
+.app-shell {
+  max-width: 760px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 16px 265px;
+  position: relative;
+}
+
+/* ヘッダー */
+.topbar {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 2px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border: 0;
+  background: none;
+  color: #68412e;
+  text-align: left;
+  padding: 0;
+}
+
+.brand-scroll {
+  width: 52px;
+  height: 40px;
+  border: 3px solid #9a7146;
+  border-radius: 8px 18px 8px 18px;
+  background: #f7e6bb;
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 3px #fff4d8, 0 3px 0 #d5b482;
+  transform: rotate(-5deg);
+}
+
+.brand strong {
+  display: block;
+  font-size: 27px;
+  letter-spacing: 0.1em;
+  line-height: 1.15;
+  text-shadow: 1px 2px #fff;
+}
+
+.brand small {
+  display: block;
+  font-size: 11px;
+  margin-top: 2px;
+  color: #8b684e;
+}
+
+.menu-button,
+.icon-button {
+  border: 1px solid #ecd9bd;
+  background: #fffdf7;
+  color: #875c40;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 3px 0 #ead9c1;
+}
+
+.menu-popover {
+  position: absolute;
+  right: 16px;
+  top: 70px;
+  z-index: 1000;
+  background: #fffdf8;
+  border: 2px solid #efdfc7;
+  border-radius: 18px;
+  padding: 8px;
+  box-shadow: 0 12px 30px #75583a25;
+}
+
+.menu-popover button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 175px;
+  padding: 11px 12px;
+  border: 0;
+  background: none;
+  color: #684b3a;
+  text-align: left;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.menu-popover button:hover {
+  background: #fff0e6;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 上部ルート選択・計測ステータスカード */
+.route-panel {
+  background: #fffdf7;
+  border: 2px solid #f0dfc5;
+  border-radius: 20px;
+  padding: 11px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 0 #f0e4d1;
+  position: relative;
+  z-index: 2;
+}
+
+.route-field {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #785844;
+}
+
+.route-field span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.route-field:first-child svg {
+  width: 15px;
+  color: #4a8fe7;
+}
+
+.route-field:nth-child(2) svg {
+  width: 15px;
+  color: #e77c96;
+}
+
+.route-field input {
+  width: 100%;
+  min-width: 0;
+  border: 1.5px solid #e7d8c8;
+  background: #fff;
+  border-radius: 11px;
+  padding: 8px 10px;
+  color: #5e4538;
+  font-size: 13px;
+  outline: none;
+}
+
+.route-field input:focus {
+  border-color: #e88aa0;
+  box-shadow: 0 0 0 3px #fce4e9;
+}
+
+.locate-button,
+.outline-button {
+  border: 1.5px solid #edcda9;
+  border-radius: 12px;
+  background: #fff5e6;
+  color: #8a5b36;
+  padding: 8px 11px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.stat {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  border-right: 1px solid #f0dfca;
+}
+
+.stat:last-child {
+  border: 0;
+}
+
+.stat > svg {
+  color: #438ee0;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.stat span {
+  font-size: 11px;
+  color: #927660;
+}
+
+.stat strong {
+  display: block;
+  color: #614435;
+  font-size: 19px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.stat small {
+  font-size: 11px;
+}
+
+/* 地図エリア */
+.map-section {
+  height: clamp(230px, 34vh, 360px);
+  min-height: 220px;
+  border: 4px solid #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 5px 18px #80634420;
+  background: #e9f1dc;
+}
+
+.leaflet-map {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.map-dot-wrap {
+  background: transparent;
+  border: 0;
+}
+
+.map-dot {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  box-shadow: 0 2px 9px #5b4a3540;
+}
+
+.map-dot.blue {
+  background: #3989e8;
+  color: white;
+}
+
+.map-dot.pink {
+  background: #ef7895;
+  color: white;
+}
+
+.map-locate {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 500;
+  border: 0;
+  background: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #4389d7;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 8px #0002;
+}
+
+.map-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 500;
+  background: #fffdf0f0;
+  border-radius: 30px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #80624c;
+  box-shadow: 0 2px 8px #0001;
+}
+
+/* アクションボタン＆リザルト */
+.action-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.primary-button,
+.pause-button,
+.stop-button,
+.secondary-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 11px 25px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.15s;
+}
+
+.primary-button {
+  background: linear-gradient(180deg, #ff8ba8, #f35e85);
+  color: white;
+  font-size: 18px;
+  min-width: 215px;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 0 #bd5270, 0 6px 14px #8a53602a;
+}
+
+.primary-button:hover,
+.pause-button:hover,
+.stop-button:hover {
+  transform: translateY(-2px);
+}
+
+.action-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pause-button {
+  background: #f3bd65;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 0 #c68b3b;
+}
+
+.stop-button {
+  background: #9c8171;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 0 #715747;
+}
+
+.secondary-button {
+  background: #fffdf7;
+  color: #805b43;
+  border: 2px solid #ead4b7;
+  box-shadow: 0 4px 0 #e3cba8;
+}
+
+.status-message {
+  margin: 0;
+  text-align: center;
+  font-size: 12px;
+  color: #8d735d;
+  min-height: 18px;
+}
+
+/* ゴールリザルトカード */
+.result-card {
+  width: min(100%, 440px);
+  background: #fffdf7;
+  border: 3px solid #f5d89e;
+  border-radius: 24px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 20px #7a5c3a1f;
+}
+
+.goal-ribbon {
+  background: linear-gradient(180deg, #ff8ba8, #ef5d83);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 6px 34px;
+  border-radius: 999px;
+  border: 3px solid #fff;
+  box-shadow: 0 3px 0 #c44a6a;
+  letter-spacing: 0.1em;
+}
+
+.result-stats {
+  width: 100%;
+  background: #fff9ec;
+  border-radius: 16px;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #7d614d;
+  border-bottom: 1px dashed #ebd8be;
+  padding-bottom: 6px;
+}
+
+.result-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.result-row span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.result-row strong {
+  font-size: 18px;
+  color: #593e30;
+}
+
+.record-badge {
+  width: 100%;
+  background: #fff0c2;
+  border: 2px solid #f3cf7a;
+  border-radius: 14px;
+  padding: 8px 12px;
+  text-align: center;
+  color: #8c5f24;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.record-badge strong {
+  font-size: 16px;
+  color: #d97b18;
+}
+
+.record-badge span {
+  font-size: 12px;
+}
+
+/* サブページ（記録・マップ・設定） */
+.page-card {
+  background: #fffdf8;
+  border: 2px solid #efdfc9;
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 5px 0 #f1e4d3;
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px dashed #e9d6bf;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+}
+
+.page-title > svg {
+  color: #e87d98;
+  width: 30px;
+  height: 30px;
+}
+
+.page-title h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.page-title p {
+  margin: 3px 0 0;
+  color: #9a806a;
+  font-size: 12px;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 24px 12px;
+  gap: 12px;
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: #8b725e;
+  margin: 0;
+}
+
+.record-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1.5px solid #f0e2d0;
+  border-radius: 16px;
+  background: #fffaf1;
+}
+
+.record-rank {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  background: #ffefd0;
+  border-radius: 50%;
+  font-weight: 700;
+  color: #a4773e;
+  flex-shrink: 0;
+}
+
+.record-body {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+}
+
+.record-body strong,
+.record-body small {
+  display: block;
+}
+
+.record-body small {
+  font-size: 10px;
+  color: #a48d79;
+  margin: 3px 0;
+}
+
+.record-body div {
+  color: #7b624e;
+  font-size: 12px;
+}
+
+.record-item .icon-button {
+  width: 34px;
+  height: 34px;
+  box-shadow: none;
+}
+
+.best-box {
+  margin-top: 14px;
+  padding: 13px 16px;
+  background: #fff1cb;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #8d683b;
+}
+
+.best-box strong {
+  font-size: 18px;
+  margin-left: auto;
+}
+
+.map-preview {
+  height: 340px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 4px solid #fff1df;
+}
+
+.map-note {
+  font-size: 12px;
+  color: #927b66;
+  margin: 10px 0 0;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 2px;
+  border-bottom: 1px solid #f0e5d7;
+}
+
+.setting-row strong,
+.setting-row small {
+  display: block;
+}
+
+.setting-row strong {
+  font-size: 14px;
+}
+
+.setting-row small {
+  font-size: 11px;
+  color: #9a826d;
+  margin-top: 3px;
+}
+
+.setting-row select {
+  border: 1.5px solid #e7d4bd;
+  border-radius: 10px;
+  padding: 8px 10px;
+  background: #fff;
+}
+
+.notice {
+  display: flex;
+  gap: 9px;
+  background: #fff4df;
+  border-radius: 14px;
+  padding: 12px;
+  margin-top: 16px;
+  font-size: 11px;
+  line-height: 1.7;
+  color: #8e7459;
+}
+
+.notice svg {
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   画面下部・メニューの上に固定表示される江戸街道巻物ステージ
+   ========================================================= */
+.mascot-dock {
+  position: fixed;
+  z-index: 650;
+  bottom: 66px; /* bottom-nav の真上にぴったり固定 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(760px, 100%);
+  padding: 0 8px 6px;
+  pointer-events: none;
+}
+
+.edo-stage {
+  position: relative;
+  width: 100%;
+  height: 162px;
+  display: flex;
+  align-items: center;
+}
+
+/* 巻物の左右の軸 */
+.scroll-rod {
+  width: 16px;
+  height: 106%;
+  background: linear-gradient(90deg, #754e2b 0%, #b58454 45%, #634021 100%);
+  border: 2px solid #472c14;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px #3d281440;
+  z-index: 4;
+  flex-shrink: 0;
+}
+
+.scroll-rod::before,
+.scroll-rod::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 7px;
+  margin: 0 auto;
+  background: #e3c184;
+  border: 1.5px solid #472c14;
+}
+
+.scroll-rod::before {
+  margin-top: -8px;
+  border-radius: 3px 3px 0 0;
+}
+
+.scroll-rod::after {
+  margin-top: 163px;
+  border-radius: 0 0 3px 3px;
+}
+
+/* 巻物の内側ビューポート（江戸の空・山・松並木・街道） */
+.stage-viewport {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  margin: 0 -4px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #dff0f5 0%, #f5f2dc 62%, #e6d1a8 100%);
+  border-top: 3px solid #9c7248;
+  border-bottom: 3px solid #9c7248;
+  box-shadow: inset 0 6px 12px #7a583226, inset 0 -6px 10px #7a583226;
+}
+
+/* 背景レイヤー共通 */
+.bg-layer {
+  position: absolute;
+  left: 0;
+  bottom: 24px;
+  width: 200%;
+  height: 112px;
+  pointer-events: none;
+}
+
+.bg-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* 街道の地面 */
+.bg-ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28px;
+  background: linear-gradient(180deg, #d7be91 0%, #c4a472 100%);
+  border-top: 2px solid #9ab378;
+}
+
+.ground-pebbles {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 200%;
+  height: 14px;
+  background-image: radial-gradient(#9c7c4c 2px, transparent 2.5px),
+    radial-gradient(#b39362 1.8px, transparent 2px);
+  background-size: 90px 14px, 130px 14px;
+  background-position: 0 2px, 45px 8px;
+}
+
+/* 歩行中（stage-walk）だけ背景が右から左へ延々とスクロールする */
+.stage-walk .bg-mountains {
+  animation: scrollLandscape 26s linear infinite;
+}
+
+.stage-walk .bg-trees {
+  animation: scrollLandscape 11s linear infinite;
+}
+
+.stage-walk .ground-pebbles {
+  animation: scrollLandscape 3.2s linear infinite;
+}
+
+@keyframes scrollLandscape {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* お団子屋（休憩中のみ表示） */
+.dango-shop {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  width: 230px;
+  height: 125px;
+  z-index: 2;
+  animation: popShop 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dango-svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes popShop {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* 吹き出し */
+.stage-speech {
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  z-index: 5;
+  background: #fffdf6f5;
+  border: 2px solid #cfa874;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #6b482e;
+  box-shadow: 0 2px 6px #4a32191f;
+  white-space: nowrap;
+}
+
+/* 伊能忠敬キャラクター本体 */
+.inou-character {
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  transform: translateX(-50%);
+  width: 145px;
+  height: 132px;
+  z-index: 3;
+}
+
+/* お団子屋休憩時は縁台の左側に座る位置に調整 */
+.stage-dango .inou-character {
+  left: calc(50% - 22px);
+  bottom: 12px;
+  width: 132px;
+  height: 120px;
+}
+
+.inou-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* --- 歩行アニメーション（右に向かって歩く） --- */
+.stage-walk .walk-body {
+  animation: walkStepBounce 0.42s ease-in-out infinite alternate;
+  transform-origin: 90px 140px;
+}
+
+.stage-walk .walk-leg-front {
+  animation: legStrideFront 0.42s ease-in-out infinite alternate;
+  transform-origin: 94px 128px;
+}
+
+.stage-walk .walk-leg-back {
+  animation: legStrideBack 0.42s ease-in-out infinite alternate;
+  transform-origin: 84px 128px;
+}
+
+.stage-walk .walk-arm-front {
+  animation: armSwingFront 0.42s ease-in-out infinite alternate;
+  transform-origin: 86px 88px;
+}
+
+.stage-walk .walk-arm-back {
+  animation: armSwingBack 0.42s ease-in-out infinite alternate;
+  transform-origin: 98px 88px;
+}
+
+@keyframes walkStepBounce {
+  from {
+    transform: translateY(0) rotate(-1deg);
+  }
+  to {
+    transform: translateY(-5px) rotate(1.5deg);
+  }
+}
+
+@keyframes legStrideFront {
+  from {
+    transform: rotate(-18deg);
+  }
+  to {
+    transform: rotate(20deg);
+  }
+}
+
+@keyframes legStrideBack {
+  from {
+    transform: rotate(20deg);
+  }
+  to {
+    transform: rotate(-18deg);
+  }
+}
+
+@keyframes armSwingFront {
+  from {
+    transform: rotate(12deg);
+  }
+  to {
+    transform: rotate(-14deg);
+  }
+}
+
+@keyframes armSwingBack {
+  from {
+    transform: rotate(-14deg);
+  }
+  to {
+    transform: rotate(14deg);
+  }
+}
+
+/* --- 待機・お団子屋休憩アニメーション --- */
+.stage-idle .front-body,
+.stage-dango .front-body {
+  animation: idleBreath 2.6s ease-in-out infinite;
+  transform-origin: 100px 150px;
+}
+
+.stage-idle .sip-arm,
+.stage-dango .sip-arm {
+  animation: sipMotion 3.2s ease-in-out infinite;
+  transform-origin: 130px 92px;
+}
+
+.stage-dango .dango-arm {
+  animation: eatDangoMotion 3.2s ease-in-out infinite;
+  transform-origin: 70px 92px;
+}
+
+.steam-line {
+  animation: steamUp 2s ease-in-out infinite;
+}
+
+@keyframes idleBreath {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.025);
+  }
+}
+
+@keyframes sipMotion {
+  0%,
+  35%,
+  100% {
+    transform: rotate(0deg);
+  }
+  55%,
+  75% {
+    transform: rotate(-14deg) translate(-4px, -8px);
+  }
+}
+
+@keyframes eatDangoMotion {
+  0%,
+  15%,
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25%,
+  45% {
+    transform: rotate(14deg) translate(6px, -6px);
+  }
+}
+
+@keyframes steamUp {
+  0% {
+    opacity: 0.2;
+    transform: translateY(2px);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-4px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* --- ゴール時ジャンプアニメーション --- */
+.stage-happy .front-body {
+  animation: goalJump 0.6s cubic-bezier(0.28, 0.84, 0.42, 1) infinite alternate;
+  transform-origin: 100px 155px;
+}
+
+.stage-happy .front-shadow {
+  animation: goalShadow 0.6s ease-in-out infinite alternate;
+  transform-origin: 100px 162px;
+}
+
+.sparkles {
+  animation: twinkleStar 0.7s ease-in-out infinite alternate;
+}
+
+@keyframes goalJump {
+  0% {
+    transform: translateY(0) scaleY(0.95);
+  }
+  100% {
+    transform: translateY(-16px) scaleY(1.03);
+  }
+}
+
+@keyframes goalShadow {
+  0% {
+    transform: scaleX(1);
+    opacity: 0.25;
+  }
+  100% {
+    transform: scaleX(0.68);
+    opacity: 0.1;
+  }
+}
+
+@keyframes twinkleStar {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 下部固定メニューバー */
+.bottom-nav {
+  position: fixed;
+  z-index: 700;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(760px, 100%);
+  height: 66px;
+  padding: 5px 10px max(5px, env(safe-area-inset-bottom));
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: #fffdf7f2;
+  backdrop-filter: blur(12px);
+  border-top: 2px solid #eadbc7;
+  box-shadow: 0 -4px 16px #73583a12;
+}
+
+.bottom-nav button {
+  border: 0;
+  background: transparent;
+  color: #8d705b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  flex-direction: column;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.bottom-nav button svg {
+  width: 21px;
+  height: 21px;
+}
+
+.bottom-nav button.active {
+  color: #ed6d8c;
+  font-weight: 700;
+}
+
+/* スマホ幅向けの微調整 */
+@media (max-width: 540px) {
+  .app-shell {
+    padding: 0 12px 245px;
+  }
+
+  .topbar {
+    height: 70px;
+  }
+
+  .brand-scroll {
+    width: 44px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .brand strong {
+    font-size: 22px;
+  }
+
+  .brand small {
+    font-size: 10px;
+  }
+
+  .route-panel {
+    padding: 9px 10px;
+    gap: 7px;
+    flex-wrap: wrap;
+    border-radius: 17px;
+  }
+
+  .route-field {
+    flex: 1 1 calc(50% - 6px);
+  }
+
+  .locate-button {
+    width: 100%;
+    justify-content: center;
+    padding: 6px;
+  }
+
+  .map-section {
+    height: 31vh;
+    min-height: 205px;
+  }
+
+  .edo-stage {
+    height: 148px;
+  }
+
+  .scroll-rod::after {
+    margin-top: 149px;
+  }
+
+  .stage-speech {
+    font-size: 10px;
+    padding: 3px 9px;
+    right: 8px;
+    top: 6px;
+  }
+
+  .inou-character {
+    width: 130px;
+    height: 118px;
+  }
+
+  .primary-button {
+    font-size: 16px;
+    padding: 10px 22px;
+    min-width: 195px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
