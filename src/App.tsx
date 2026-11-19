@@ -58,6 +58,13 @@ function Recenter({ point }: { point: Point }) {
   return null
 }
 
+const SPEECH: Record<MascotMood, string> = {
+  idle: 'ぼちぼち行くかのう',
+  walk: '歩みで歴史に名を残すんじゃ！',
+  dango: '気ままに団子でも…',
+  happy: 'あっぱれじゃ！'
+}
+
 function EdoStage({ mood }: { mood: MascotMood }) {
   const isHappy = mood === 'happy'
   const currentImg = walkSketch
@@ -97,6 +104,10 @@ function EdoStage({ mood }: { mood: MascotMood }) {
 
         <div className="sketch-character-wrap">
           <img src={currentImg} alt={altText} className="sketch-character-img" />
+        </div>
+
+        <div className="speech-bubble" key={mood} role="status">
+          {SPEECH[mood]}
         </div>
       </div>
     </div>

@@ -713,3 +713,50 @@ button:disabled {
   object-fit: contain;
   filter: drop-shadow(0 2px 1px rgba(76, 54, 34, 0.12));
 }
+
+/* 伊能忠敬のふきだし：キャラの右上に小さく表示（キャラと背景を隠しすぎない） */
+.speech-bubble {
+  position: absolute;
+  top: 6px;
+  left: calc(50% + 50px);
+  z-index: 4;
+  max-width: min(120px, calc(50% - 58px));
+  padding: 4px 9px;
+  background: rgba(255, 253, 247, 0.94);
+  border: 1.5px solid #5a4030;
+  border-radius: 11px;
+  color: #5e4334;
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  box-shadow: 0 2px 0 rgba(90, 64, 48, 0.18);
+  pointer-events: none;
+  transform-origin: left center;
+  animation: bubblePop 0.3s ease-out;
+}
+
+/* しっぽ（キャラの顔のほうへ向ける） */
+.speech-bubble::before,
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  border-style: solid;
+}
+
+.speech-bubble::before {
+  left: -8px;
+  border-width: 5px 7px 5px 0;
+  border-color: transparent #5a4030 transparent transparent;
+}
+
+.speech-bubble::after {
+  left: -5.5px;
+  border-width: 4px 6px 4px 0;
+  border-color: transparent rgba(255, 253, 247, 0.98) transparent transparent;
+}
+
+@keyframes bubblePop {
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: scale(1); }
+}
