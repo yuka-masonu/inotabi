@@ -4,8 +4,6 @@
   font-family: 'Kiwi Maru', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
   color: #5e4334;
   background: #fff8e9;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
 }
 
 * {
@@ -15,12 +13,11 @@
 body {
   margin: 0;
   min-width: 320px;
-  background: linear-gradient(180deg, #fff1cf 0%, #fff9ec 240px, #f5f9ec 100%);
+  background: linear-gradient(180deg, #fff1cf 0%, #fff9ec 200px, #f5f9ec 100%);
+  overflow-x: hidden;
 }
 
-button,
-input,
-select {
+button, input, select {
   font: inherit;
 }
 
@@ -33,28 +30,31 @@ button:disabled {
   cursor: wait;
 }
 
-/* 全体コンテナ（下部固定の江戸街道ステージ＋メニュー分の余白を確保） */
 .app-shell {
-  max-width: 760px;
-  min-height: 100vh;
+  max-width: 720px;
+  height: 100vh;
+  max-height: 100vh;
   margin: 0 auto;
-  padding: 0 16px 265px;
+  padding: 4px 12px;
+  display: flex;
+  flex-direction: column;
   position: relative;
+  overflow: hidden;
 }
 
-/* ヘッダー */
 .topbar {
-  height: 78px;
+  height: 52px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 2px;
+  padding: 0 2px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 10px;
   border: 0;
   background: none;
   color: #68412e;
@@ -63,71 +63,70 @@ button:disabled {
 }
 
 .brand-scroll {
-  width: 52px;
-  height: 40px;
-  border: 3px solid #9a7146;
-  border-radius: 8px 18px 8px 18px;
+  width: 42px;
+  height: 32px;
+  border: 2.5px solid #9a7146;
+  border-radius: 6px 14px 6px 14px;
   background: #f7e6bb;
   display: grid;
   place-items: center;
-  font-size: 21px;
+  font-size: 17px;
   font-weight: 700;
-  box-shadow: inset 0 0 0 3px #fff4d8, 0 3px 0 #d5b482;
-  transform: rotate(-5deg);
+  box-shadow: inset 0 0 0 2px #fff4d8, 0 2px 0 #d5b482;
+  transform: rotate(-4deg);
 }
 
 .brand strong {
   display: block;
-  font-size: 27px;
-  letter-spacing: 0.1em;
-  line-height: 1.15;
-  text-shadow: 1px 2px #fff;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-shadow: 1px 1px #fff;
 }
 
 .brand small {
   display: block;
-  font-size: 11px;
-  margin-top: 2px;
+  font-size: 10px;
   color: #8b684e;
 }
 
-.menu-button,
-.icon-button {
-  border: 1px solid #ecd9bd;
+.menu-button, .icon-button {
+  border: 1.5px solid #ecd9bd;
   background: #fffdf7;
   color: #875c40;
   border-radius: 50%;
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   display: grid;
   place-items: center;
-  box-shadow: 0 3px 0 #ead9c1;
+  box-shadow: 0 2px 0 #ead9c1;
 }
 
 .menu-popover {
   position: absolute;
-  right: 16px;
-  top: 70px;
-  z-index: 1000;
+  right: 14px;
+  top: 52px;
+  z-index: 2000;
   background: #fffdf8;
   border: 2px solid #efdfc7;
-  border-radius: 18px;
-  padding: 8px;
-  box-shadow: 0 12px 30px #75583a25;
+  border-radius: 16px;
+  padding: 6px;
+  box-shadow: 0 10px 25px #75583a25;
 }
 
 .menu-popover button {
   display: flex;
   align-items: center;
-  gap: 10px;
-  width: 175px;
-  padding: 11px 12px;
+  gap: 9px;
+  width: 160px;
+  padding: 10px 11px;
   border: 0;
   background: none;
   color: #684b3a;
   text-align: left;
-  border-radius: 12px;
+  border-radius: 10px;
   font-weight: 500;
+  font-size: 13px;
 }
 
 .menu-popover button:hover {
@@ -135,23 +134,24 @@ button:disabled {
 }
 
 .main-content {
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
+  padding-bottom: 6px;
 }
 
-/* 上部ルート選択・計測ステータスカード */
 .route-panel {
+  flex-shrink: 0;
   background: #fffdf7;
   border: 2px solid #f0dfc5;
-  border-radius: 20px;
-  padding: 11px 14px;
+  border-radius: 16px;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 0 #f0e4d1;
-  position: relative;
-  z-index: 2;
+  gap: 8px;
+  box-shadow: 0 3px 0 #f0e4d1;
 }
 
 .route-field {
@@ -159,8 +159,8 @@ button:disabled {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  font-size: 12px;
+  gap: 2px;
+  font-size: 11px;
   font-weight: 700;
   color: #785844;
 }
@@ -168,17 +168,7 @@ button:disabled {
 .route-field span {
   display: flex;
   align-items: center;
-  gap: 5px;
-}
-
-.route-field:first-child svg {
-  width: 15px;
-  color: #4a8fe7;
-}
-
-.route-field:nth-child(2) svg {
-  width: 15px;
-  color: #e77c96;
+  gap: 4px;
 }
 
 .route-field input {
@@ -186,29 +176,23 @@ button:disabled {
   min-width: 0;
   border: 1.5px solid #e7d8c8;
   background: #fff;
-  border-radius: 11px;
-  padding: 8px 10px;
+  border-radius: 9px;
+  padding: 6px 8px;
   color: #5e4538;
-  font-size: 13px;
+  font-size: 12px;
   outline: none;
 }
 
-.route-field input:focus {
-  border-color: #e88aa0;
-  box-shadow: 0 0 0 3px #fce4e9;
-}
-
-.locate-button,
-.outline-button {
+.locate-button, .outline-button {
   border: 1.5px solid #edcda9;
-  border-radius: 12px;
+  border-radius: 10px;
   background: #fff5e6;
   color: #8a5b36;
-  padding: 8px 11px;
+  padding: 6px 10px;
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 12px;
+  gap: 4px;
+  font-size: 11px;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -218,7 +202,7 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 7px;
   min-width: 0;
   border-right: 1px solid #f0dfca;
 }
@@ -229,37 +213,43 @@ button:disabled {
 
 .stat > svg {
   color: #438ee0;
-  width: 22px;
-  height: 22px;
   flex-shrink: 0;
 }
 
 .stat span {
-  font-size: 11px;
+  font-size: 10px;
   color: #927660;
+  display: block;
 }
 
 .stat strong {
   display: block;
   color: #614435;
-  font-size: 19px;
-  line-height: 1.3;
-  white-space: nowrap;
+  font-size: 16px;
+  line-height: 1.2;
 }
 
-.stat small {
+.nav-guidance-bar {
+  flex-shrink: 0;
+  background: #eef6fd;
+  border: 1.5px solid #bce0fd;
+  border-radius: 10px;
+  padding: 5px 10px;
   font-size: 11px;
+  color: #31689b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-/* 地図エリア */
 .map-section {
-  height: clamp(230px, 34vh, 360px);
-  min-height: 220px;
-  border: 4px solid #fff;
-  border-radius: 24px;
+  flex: 1;
+  min-height: 135px;
+  border: 3px solid #fff;
+  border-radius: 18px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 5px 18px #80634420;
+  box-shadow: 0 4px 14px #8063441a;
   background: #e9f1dc;
 }
 
@@ -275,14 +265,14 @@ button:disabled {
 }
 
 .map-dot {
-  width: 30px;
-  height: 30px;
-  border: 3px solid #fff;
+  width: 26px;
+  height: 26px;
+  border: 2.5px solid #fff;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 15px;
-  box-shadow: 0 2px 9px #5b4a3540;
+  font-size: 13px;
+  box-shadow: 0 2px 7px #5b4a3540;
 }
 
 .map-dot.blue {
@@ -297,515 +287,116 @@ button:disabled {
 
 .map-locate {
   position: absolute;
-  right: 12px;
-  top: 12px;
+  right: 10px;
+  top: 10px;
   z-index: 500;
   border: 0;
   background: #fff;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   color: #4389d7;
   display: grid;
   place-items: center;
-  box-shadow: 0 2px 8px #0002;
+  box-shadow: 0 2px 6px #0002;
 }
 
-.map-hint {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  z-index: 500;
-  background: #fffdf0f0;
-  border-radius: 30px;
-  padding: 6px 12px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: #80624c;
-  box-shadow: 0 2px 8px #0001;
-}
-
-/* アクションボタン＆リザルト */
-.action-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.primary-button,
-.pause-button,
-.stop-button,
-.secondary-button {
-  border: 0;
-  border-radius: 999px;
-  padding: 11px 25px;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: transform 0.15s;
-}
-
-.primary-button {
-  background: linear-gradient(180deg, #ff8ba8, #f35e85);
-  color: white;
-  font-size: 18px;
-  min-width: 215px;
-  border: 3px solid #fff;
-  box-shadow: 0 4px 0 #bd5270, 0 6px 14px #8a53602a;
-}
-
-.primary-button:hover,
-.pause-button:hover,
-.stop-button:hover {
-  transform: translateY(-2px);
-}
-
-.action-row {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.pause-button {
-  background: #f3bd65;
-  color: #fff;
-  border: 2px solid #fff;
-  box-shadow: 0 4px 0 #c68b3b;
-}
-
-.stop-button {
-  background: #9c8171;
-  color: #fff;
-  border: 2px solid #fff;
-  box-shadow: 0 4px 0 #715747;
-}
-
-.secondary-button {
-  background: #fffdf7;
-  color: #805b43;
-  border: 2px solid #ead4b7;
-  box-shadow: 0 4px 0 #e3cba8;
-}
-
-.status-message {
-  margin: 0;
-  text-align: center;
-  font-size: 12px;
-  color: #8d735d;
-  min-height: 18px;
-}
-
-/* ゴールリザルトカード */
-.result-card {
-  width: min(100%, 440px);
-  background: #fffdf7;
-  border: 3px solid #f5d89e;
-  border-radius: 24px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 8px 20px #7a5c3a1f;
-}
-
-.goal-ribbon {
-  background: linear-gradient(180deg, #ff8ba8, #ef5d83);
-  color: #fff;
-  font-size: 22px;
-  font-weight: 700;
-  padding: 6px 34px;
-  border-radius: 999px;
-  border: 3px solid #fff;
-  box-shadow: 0 3px 0 #c44a6a;
-  letter-spacing: 0.1em;
-}
-
-.result-stats {
-  width: 100%;
-  background: #fff9ec;
-  border-radius: 16px;
-  padding: 10px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.result-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 14px;
-  color: #7d614d;
-  border-bottom: 1px dashed #ebd8be;
-  padding-bottom: 6px;
-}
-
-.result-row:last-child {
-  border-bottom: 0;
-  padding-bottom: 0;
-}
-
-.result-row span {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.result-row strong {
-  font-size: 18px;
-  color: #593e30;
-}
-
-.record-badge {
-  width: 100%;
-  background: #fff0c2;
-  border: 2px solid #f3cf7a;
-  border-radius: 14px;
-  padding: 8px 12px;
-  text-align: center;
-  color: #8c5f24;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.record-badge strong {
-  font-size: 16px;
-  color: #d97b18;
-}
-
-.record-badge span {
-  font-size: 12px;
-}
-
-/* サブページ（記録・マップ・設定） */
-.page-card {
-  background: #fffdf8;
-  border: 2px solid #efdfc9;
-  border-radius: 24px;
-  padding: 20px;
-  box-shadow: 0 5px 0 #f1e4d3;
-}
-
-.page-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border-bottom: 1px dashed #e9d6bf;
-  padding-bottom: 14px;
-  margin-bottom: 16px;
-}
-
-.page-title > svg {
-  color: #e87d98;
-  width: 30px;
-  height: 30px;
-}
-
-.page-title h2 {
-  margin: 0;
-  font-size: 20px;
-}
-
-.page-title p {
-  margin: 3px 0 0;
-  color: #9a806a;
-  font-size: 12px;
-}
-
-.empty-state {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 24px 12px;
-  gap: 12px;
-}
-
-.empty-state p {
-  font-size: 14px;
-  color: #8b725e;
-  margin: 0;
-}
-
-.record-list {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-}
-
-.record-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px;
-  border: 1.5px solid #f0e2d0;
-  border-radius: 16px;
-  background: #fffaf1;
-}
-
-.record-rank {
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  background: #ffefd0;
-  border-radius: 50%;
-  font-weight: 700;
-  color: #a4773e;
-  flex-shrink: 0;
-}
-
-.record-body {
-  flex: 1;
-  min-width: 0;
-  font-size: 13px;
-}
-
-.record-body strong,
-.record-body small {
-  display: block;
-}
-
-.record-body small {
-  font-size: 10px;
-  color: #a48d79;
-  margin: 3px 0;
-}
-
-.record-body div {
-  color: #7b624e;
-  font-size: 12px;
-}
-
-.record-item .icon-button {
-  width: 34px;
-  height: 34px;
-  box-shadow: none;
-}
-
-.best-box {
-  margin-top: 14px;
-  padding: 13px 16px;
-  background: #fff1cb;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #8d683b;
-}
-
-.best-box strong {
-  font-size: 18px;
-  margin-left: auto;
-}
-
-.map-preview {
-  height: 340px;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 4px solid #fff1df;
-}
-
-.map-note {
-  font-size: 12px;
-  color: #927b66;
-  margin: 10px 0 0;
-}
-
-.setting-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 14px 2px;
-  border-bottom: 1px solid #f0e5d7;
-}
-
-.setting-row strong,
-.setting-row small {
-  display: block;
-}
-
-.setting-row strong {
-  font-size: 14px;
-}
-
-.setting-row small {
-  font-size: 11px;
-  color: #9a826d;
-  margin-top: 3px;
-}
-
-.setting-row select {
-  border: 1.5px solid #e7d4bd;
-  border-radius: 10px;
-  padding: 8px 10px;
-  background: #fff;
-}
-
-.notice {
-  display: flex;
-  gap: 9px;
-  background: #fff4df;
-  border-radius: 14px;
-  padding: 12px;
-  margin-top: 16px;
-  font-size: 11px;
-  line-height: 1.7;
-  color: #8e7459;
-}
-
-.notice svg {
-  flex-shrink: 0;
-}
-
-/* =========================================================
-   画面下部・メニューの上に固定表示される江戸街道巻物ステージ
-   ========================================================= */
 .mascot-dock {
-  position: fixed;
-  z-index: 650;
-  bottom: 66px; /* bottom-nav の真上にぴったり固定 */
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(760px, 100%);
-  padding: 0 8px 6px;
-  pointer-events: none;
+  flex-shrink: 0;
+  width: 100%;
+  padding: 0 2px;
 }
 
 .edo-stage {
   position: relative;
   width: 100%;
-  height: 162px;
+  height: 128px;
   display: flex;
   align-items: center;
 }
 
-/* 巻物の左右の軸 */
 .scroll-rod {
-  width: 16px;
+  width: 12px;
   height: 106%;
   background: linear-gradient(90deg, #754e2b 0%, #b58454 45%, #634021 100%);
-  border: 2px solid #472c14;
-  border-radius: 8px;
-  box-shadow: 0 3px 8px #3d281440;
+  border: 1.5px solid #472c14;
+  border-radius: 6px;
   z-index: 4;
   flex-shrink: 0;
 }
 
-.scroll-rod::before,
-.scroll-rod::after {
+.scroll-rod::before, .scroll-rod::after {
   content: '';
   display: block;
-  width: 10px;
-  height: 7px;
+  width: 8px;
+  height: 5px;
   margin: 0 auto;
   background: #e3c184;
-  border: 1.5px solid #472c14;
+  border: 1px solid #472c14;
 }
 
 .scroll-rod::before {
-  margin-top: -8px;
-  border-radius: 3px 3px 0 0;
+  margin-top: -6px;
+  border-radius: 2px 2px 0 0;
 }
 
 .scroll-rod::after {
-  margin-top: 163px;
-  border-radius: 0 0 3px 3px;
+  margin-top: 127px;
+  border-radius: 0 0 2px 2px;
 }
 
-/* 巻物の内側ビューポート（江戸の空・山・松並木・街道） */
 .stage-viewport {
   position: relative;
   flex: 1;
   height: 100%;
-  margin: 0 -4px;
+  margin: 0 -3px;
   overflow: hidden;
-  background: linear-gradient(180deg, #dff0f5 0%, #f5f2dc 62%, #e6d1a8 100%);
-  border-top: 3px solid #9c7248;
-  border-bottom: 3px solid #9c7248;
-  box-shadow: inset 0 6px 12px #7a583226, inset 0 -6px 10px #7a583226;
+  background: #e2f0ee;
+  border-top: 2.5px solid #9c7248;
+  border-bottom: 2.5px solid #9c7248;
 }
 
-/* 背景レイヤー共通 */
-.bg-layer {
+/* 絵巻の背景：遠景（空・富士山・里）と近景（松・桜・街道）の2層 */
+.bg-far,
+.bg-near {
   position: absolute;
-  left: 0;
-  bottom: 24px;
-  width: 200%;
-  height: 112px;
+  inset: 0;
   pointer-events: none;
+  background-repeat: repeat-x;
+  background-position: 0 0;
+  background-size: 820px 100%;
 }
 
-.bg-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
+.bg-far {
+  background-image: url('./assets/edo_bg_far.png');
 }
 
-/* 街道の地面 */
-.bg-ground {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 28px;
-  background: linear-gradient(180deg, #d7be91 0%, #c4a472 100%);
-  border-top: 2px solid #9ab378;
+.bg-near {
+  background-image: url('./assets/edo_bg_near.png');
 }
 
-.ground-pebbles {
-  position: absolute;
-  top: 7px;
-  left: 0;
-  width: 200%;
-  height: 14px;
-  background-image: radial-gradient(#9c7c4c 2px, transparent 2.5px),
-    radial-gradient(#b39362 1.8px, transparent 2px);
-  background-size: 90px 14px, 130px 14px;
-  background-position: 0 2px, 45px 8px;
+/* 歩行中は背景がゆっくり流れる（遠景はゆっくり、近景は速く） */
+.stage-walk .bg-far {
+  animation: scrollBg 60s linear infinite;
 }
 
-/* 歩行中（stage-walk）だけ背景が右から左へ延々とスクロールする */
-.stage-walk .bg-mountains {
-  animation: scrollLandscape 26s linear infinite;
+.stage-walk .bg-near {
+  animation: scrollBg 14s linear infinite;
 }
 
-.stage-walk .bg-trees {
-  animation: scrollLandscape 11s linear infinite;
+@keyframes scrollBg {
+  from { background-position-x: 0; }
+  to { background-position-x: -820px; }
 }
 
-.stage-walk .ground-pebbles {
-  animation: scrollLandscape 3.2s linear infinite;
-}
-
-@keyframes scrollLandscape {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* お団子屋（休憩中のみ表示） */
 .dango-shop {
   position: absolute;
   left: 50%;
-  bottom: 14px;
+  bottom: 10px;
   transform: translateX(-50%);
-  width: 230px;
-  height: 125px;
+  width: 190px;
+  height: 102px;
   z-index: 2;
-  animation: popShop 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .dango-svg {
@@ -813,366 +404,359 @@ button:disabled {
   height: 100%;
 }
 
-@keyframes popShop {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) scale(0.92);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
-  }
-}
-
-/* 吹き出し */
-.stage-speech {
-  position: absolute;
-  top: 8px;
-  right: 14px;
-  z-index: 5;
-  background: #fffdf6f5;
-  border: 2px solid #cfa874;
-  border-radius: 999px;
-  padding: 4px 12px;
-  font-size: 11px;
-  font-weight: 700;
-  color: #6b482e;
-  box-shadow: 0 2px 6px #4a32191f;
-  white-space: nowrap;
-}
-
-/* 伊能忠敬キャラクター本体 */
-.inou-character {
+/* 手書きイラストの白背景を乗算（multiply）で透過し、街道に馴染ませる */
+.sketch-character-wrap {
   position: absolute;
   left: 50%;
-  bottom: 6px;
+  bottom: 2px;
   transform: translateX(-50%);
-  width: 145px;
-  height: 132px;
+  height: 122px;
   z-index: 3;
-}
-
-/* お団子屋休憩時は縁台の左側に座る位置に調整 */
-.stage-dango .inou-character {
-  left: calc(50% - 22px);
-  bottom: 12px;
-  width: 132px;
-  height: 120px;
-}
-
-.inou-svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-/* --- 歩行アニメーション（右に向かって歩く） --- */
-.stage-walk .walk-body {
-  animation: walkStepBounce 0.42s ease-in-out infinite alternate;
-  transform-origin: 90px 140px;
-}
-
-.stage-walk .walk-leg-front {
-  animation: legStrideFront 0.42s ease-in-out infinite alternate;
-  transform-origin: 94px 128px;
-}
-
-.stage-walk .walk-leg-back {
-  animation: legStrideBack 0.42s ease-in-out infinite alternate;
-  transform-origin: 84px 128px;
-}
-
-.stage-walk .walk-arm-front {
-  animation: armSwingFront 0.42s ease-in-out infinite alternate;
-  transform-origin: 86px 88px;
-}
-
-.stage-walk .walk-arm-back {
-  animation: armSwingBack 0.42s ease-in-out infinite alternate;
-  transform-origin: 98px 88px;
-}
-
-@keyframes walkStepBounce {
-  from {
-    transform: translateY(0) rotate(-1deg);
-  }
-  to {
-    transform: translateY(-5px) rotate(1.5deg);
-  }
-}
-
-@keyframes legStrideFront {
-  from {
-    transform: rotate(-18deg);
-  }
-  to {
-    transform: rotate(20deg);
-  }
-}
-
-@keyframes legStrideBack {
-  from {
-    transform: rotate(20deg);
-  }
-  to {
-    transform: rotate(-18deg);
-  }
-}
-
-@keyframes armSwingFront {
-  from {
-    transform: rotate(12deg);
-  }
-  to {
-    transform: rotate(-14deg);
-  }
-}
-
-@keyframes armSwingBack {
-  from {
-    transform: rotate(-14deg);
-  }
-  to {
-    transform: rotate(14deg);
-  }
-}
-
-/* --- 待機・お団子屋休憩アニメーション --- */
-.stage-idle .front-body,
-.stage-dango .front-body {
-  animation: idleBreath 2.6s ease-in-out infinite;
-  transform-origin: 100px 150px;
-}
-
-.stage-idle .sip-arm,
-.stage-dango .sip-arm {
-  animation: sipMotion 3.2s ease-in-out infinite;
-  transform-origin: 130px 92px;
-}
-
-.stage-dango .dango-arm {
-  animation: eatDangoMotion 3.2s ease-in-out infinite;
-  transform-origin: 70px 92px;
-}
-
-.steam-line {
-  animation: steamUp 2s ease-in-out infinite;
-}
-
-@keyframes idleBreath {
-  0%,
-  100% {
-    transform: scaleY(1);
-  }
-  50% {
-    transform: scaleY(1.025);
-  }
-}
-
-@keyframes sipMotion {
-  0%,
-  35%,
-  100% {
-    transform: rotate(0deg);
-  }
-  55%,
-  75% {
-    transform: rotate(-14deg) translate(-4px, -8px);
-  }
-}
-
-@keyframes eatDangoMotion {
-  0%,
-  15%,
-  60%,
-  100% {
-    transform: rotate(0deg);
-  }
-  25%,
-  45% {
-    transform: rotate(14deg) translate(6px, -6px);
-  }
-}
-
-@keyframes steamUp {
-  0% {
-    opacity: 0.2;
-    transform: translateY(2px);
-  }
-  50% {
-    opacity: 0.9;
-    transform: translateY(-4px);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-}
-
-/* --- ゴール時ジャンプアニメーション --- */
-.stage-happy .front-body {
-  animation: goalJump 0.6s cubic-bezier(0.28, 0.84, 0.42, 1) infinite alternate;
-  transform-origin: 100px 155px;
-}
-
-.stage-happy .front-shadow {
-  animation: goalShadow 0.6s ease-in-out infinite alternate;
-  transform-origin: 100px 162px;
-}
-
-.sparkles {
-  animation: twinkleStar 0.7s ease-in-out infinite alternate;
-}
-
-@keyframes goalJump {
-  0% {
-    transform: translateY(0) scaleY(0.95);
-  }
-  100% {
-    transform: translateY(-16px) scaleY(1.03);
-  }
-}
-
-@keyframes goalShadow {
-  0% {
-    transform: scaleX(1);
-    opacity: 0.25;
-  }
-  100% {
-    transform: scaleX(0.68);
-    opacity: 0.1;
-  }
-}
-
-@keyframes twinkleStar {
-  from {
-    opacity: 0.35;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* 下部固定メニューバー */
-.bottom-nav {
-  position: fixed;
-  z-index: 700;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(760px, 100%);
-  height: 66px;
-  padding: 5px 10px max(5px, env(safe-area-inset-bottom));
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  background: #fffdf7f2;
-  backdrop-filter: blur(12px);
-  border-top: 2px solid #eadbc7;
-  box-shadow: 0 -4px 16px #73583a12;
-}
-
-.bottom-nav button {
-  border: 0;
-  background: transparent;
-  color: #8d705b;
   display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.sketch-character-img {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* 歩行中アニメーション（トコトコ揺れて進む） */
+.stage-walk .sketch-character-img {
+  animation: sketchWalkBob 0.45s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+@keyframes sketchWalkBob {
+  0% {
+    transform: translateY(0) rotate(-2deg) scaleX(1);
+  }
+  100% {
+    transform: translateY(-6px) rotate(2.5deg) scaleX(1.02);
+  }
+}
+
+/* 待機・休憩中アニメーション */
+.stage-idle .sketch-character-img,
+.stage-dango .sketch-character-img {
+  animation: sketchIdleSway 2.4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes sketchIdleSway {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(1.2deg);
+  }
+}
+
+/* ゴール時アニメーション（ぴょんぴょん飛び跳ねて喜ぶ） */
+.stage-happy .sketch-character-img {
+  animation: sketchHappyJump 0.55s cubic-bezier(0.28, 0.84, 0.42, 1) infinite alternate;
+  transform-origin: bottom center;
+}
+
+@keyframes sketchHappyJump {
+  0% {
+    transform: translateY(0) scale(1, 0.94);
+  }
+  100% {
+    transform: translateY(-14px) scale(0.98, 1.04);
+  }
+}
+
+.action-area {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-message {
+  margin: 0;
+  font-size: 11px;
+  color: #8a6d56;
+  min-height: 15px;
+}
+
+.primary-button, .pause-button, .stop-button, .secondary-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-weight: 700;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.primary-button {
+  background: linear-gradient(180deg, #ff8ba8, #f35e85);
+  color: white;
+  min-width: 185px;
+  border: 2.5px solid #fff;
+  box-shadow: 0 3px 0 #bd5270;
+}
+
+.action-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.pause-button {
+  background: #f3bd65;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 3px 0 #c68b3b;
+}
+
+.stop-button {
+  background: #9c8171;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 3px 0 #715747;
+}
+
+.secondary-button {
+  background: #fffdf7;
+  color: #805b43;
+  border: 2px solid #ead4b7;
+  box-shadow: 0 3px 0 #e3cba8;
+}
+
+.result-card {
+  width: 100%;
+  background: #fffdf7;
+  border: 2.5px solid #f5d89e;
+  border-radius: 18px;
+  padding: 10px 14px;
+  display: flex;
   flex-direction: column;
-  font-size: 11px;
-  font-weight: 500;
+  align-items: center;
+  gap: 8px;
 }
 
-.bottom-nav button svg {
-  width: 21px;
-  height: 21px;
-}
-
-.bottom-nav button.active {
-  color: #ed6d8c;
+.goal-ribbon {
+  background: linear-gradient(180deg, #ff8ba8, #ef5d83);
+  color: #fff;
+  font-size: 18px;
   font-weight: 700;
+  padding: 4px 24px;
+  border-radius: 999px;
+  border: 2px solid #fff;
 }
 
-/* スマホ幅向けの微調整 */
-@media (max-width: 540px) {
-  .app-shell {
-    padding: 0 12px 245px;
-  }
-
-  .topbar {
-    height: 70px;
-  }
-
-  .brand-scroll {
-    width: 44px;
-    height: 35px;
-    font-size: 18px;
-  }
-
-  .brand strong {
-    font-size: 22px;
-  }
-
-  .brand small {
-    font-size: 10px;
-  }
-
-  .route-panel {
-    padding: 9px 10px;
-    gap: 7px;
-    flex-wrap: wrap;
-    border-radius: 17px;
-  }
-
-  .route-field {
-    flex: 1 1 calc(50% - 6px);
-  }
-
-  .locate-button {
-    width: 100%;
-    justify-content: center;
-    padding: 6px;
-  }
-
-  .map-section {
-    height: 31vh;
-    min-height: 205px;
-  }
-
-  .edo-stage {
-    height: 148px;
-  }
-
-  .scroll-rod::after {
-    margin-top: 149px;
-  }
-
-  .stage-speech {
-    font-size: 10px;
-    padding: 3px 9px;
-    right: 8px;
-    top: 6px;
-  }
-
-  .inou-character {
-    width: 130px;
-    height: 118px;
-  }
-
-  .primary-button {
-    font-size: 16px;
-    padding: 10px 22px;
-    min-width: 195px;
-  }
+.result-stats {
+  width: 100%;
+  background: #fff9ec;
+  border-radius: 12px;
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-  }
+.result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #7d614d;
+}
+
+.result-row strong {
+  font-size: 15px;
+  color: #593e30;
+}
+
+.record-badge {
+  background: #fff0c2;
+  border: 1.5px solid #f3cf7a;
+  border-radius: 10px;
+  padding: 4px 10px;
+  text-align: center;
+  font-size: 11px;
+  color: #8c5f24;
+}
+
+.page-card {
+  flex: 1;
+  min-height: 0;
+  background: #fffdf8;
+  border: 2px solid #efdfc9;
+  border-radius: 20px;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px dashed #e9d6bf;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.page-title h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.page-title p {
+  margin: 2px 0 0;
+  color: #9a806a;
+  font-size: 11px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 20px;
+}
+
+.record-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #f0e2d0;
+  border-radius: 12px;
+  background: #fffaf1;
+}
+
+.record-rank {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  background: #ffefd0;
+  border-radius: 50%;
+  font-weight: 700;
+  color: #a4773e;
+  font-size: 13px;
+}
+
+.record-body {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+}
+
+.best-box {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #fff1cb;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #8d683b;
+  font-size: 13px;
+}
+
+.best-box strong {
+  margin-left: auto;
+  font-size: 15px;
+}
+
+.map-preview {
+  height: 260px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 3px solid #fff1df;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0e5d7;
+  font-size: 13px;
+}
+
+.setting-row small {
+  display: block;
+  font-size: 10px;
+  color: #9a826d;
+}
+
+.setting-row select {
+  border: 1px solid #e7d4bd;
+  border-radius: 8px;
+  padding: 6px;
+  background: #fff;
+  font-size: 12px;
+}
+
+/* 伊能忠敬のイラスト（透過PNG）を全モード共通で表示 */
+.sketch-character-img {
+  mix-blend-mode: normal;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 1px rgba(76, 54, 34, 0.12));
+}
+
+/* 伊能忠敬のふきだし：キャラの右上に小さく表示（キャラと背景を隠しすぎない） */
+.speech-bubble {
+  position: absolute;
+  top: 6px;
+  left: calc(50% + 50px);
+  z-index: 4;
+  max-width: min(120px, calc(50% - 58px));
+  padding: 4px 9px;
+  background: rgba(255, 253, 247, 0.94);
+  border: 1.5px solid #5a4030;
+  border-radius: 11px;
+  color: #5e4334;
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  box-shadow: 0 2px 0 rgba(90, 64, 48, 0.18);
+  pointer-events: none;
+  transform-origin: left center;
+  animation: bubblePop 0.3s ease-out;
+}
+
+/* しっぽ（キャラの顔のほうへ向ける） */
+.speech-bubble::before,
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  border-style: solid;
+}
+
+.speech-bubble::before {
+  left: -8px;
+  border-width: 5px 7px 5px 0;
+  border-color: transparent #5a4030 transparent transparent;
+}
+
+.speech-bubble::after {
+  left: -5.5px;
+  border-width: 4px 6px 4px 0;
+  border-color: transparent rgba(255, 253, 247, 0.98) transparent transparent;
+}
+
+@keyframes bubblePop {
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: scale(1); }
 }
